@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 AUTUMN TRIP INVITATION</title>
+<style>
+  * {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    color: #1d1d1f;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+
+  /* 화면 전체를 사용하도록 설정 */
+  .container {
+    width: 100%;
+    min-height: 100vh;
+    padding: 60px 24px 40px 24px;
+    max-width: 680px; /* PC에서도 읽기 편하도록 중앙 배치하되 카드 박스는 제거 */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .tag {
+    display: inline-block;
+    color: #86868b;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  /* 시원시원하게 확 커진 폰트 크기 */
+  h1 {
+    font-size: 38px;
+    font-weight: 800;
+    color: #1d1d1f;
+    margin: 0 0 20px 0;
+    word-break: keep-all;
+    line-height: 1.2;
+    letter-spacing: -1.2px;
+  }
+
+  p {
+    color: #6e6e73;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.5;
+    margin: 0 0 36px 0;
+    word-break: keep-all;
+    letter-spacing: -0.5px;
+  }
+
+  /* 큼직해진 풀사이즈 버튼 */
+  .btn {
+    width: 100%;
+    padding: 22px 24px;
+    font-size: 18px;
+    font-weight: 700;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-bottom: 14px;
+    transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+    text-align: left;
+    line-height: 1.3;
+    letter-spacing: -0.4px;
+  }
+
+  .btn-option {
+    background: #f5f5f7;
+    color: #1d1d1f;
+  }
+
+  .btn-option:hover, .btn-option:active {
+    background: #e8e8ed;
+    transform: scale(0.99);
+  }
+
+  .btn-action {
+    background: #007aff;
+    color: #ffffff;
+    font-size: 19px;
+    text-align: center;
+    margin-top: 16px;
+  }
+
+  .btn-action:hover, .btn-action:active {
+    background: #0066cc;
+    transform: scale(0.99);
+  }
+
+  /* 커스텀 체크박스 그룹 */
+  .checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+
+  .checkbox-label {
+    display: flex;
+    align-items: center;
+    padding: 20px 24px;
+    background: #f5f5f7;
+    border-radius: 20px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+
+  .checkbox-label:hover {
+    background: #e8e8ed;
+  }
+
+  .checkbox-label input {
+    margin-right: 14px;
+    width: 22px;
+    height: 22px;
+    accent-color: #007aff;
+  }
+
+  /* 시원시원한 입력창 */
+  input[type="text"] {
+    width: 100%;
+    padding: 20px 22px;
+    border-radius: 20px;
+    border: 1px solid #d2d2d7;
+    background: #ffffff;
+    color: #1d1d1f;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease;
+  }
+
+  input[type="text"]:focus {
+    border-color: #007aff;
+    box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.15);
+  }
+
+  .step {
+    display: none;
+  }
+
+  .step.active {
+    display: block;
+    animation: fadeIn 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .info-box {
+    background: #f5f5f7;
+    border-radius: 22px;
+    padding: 24px;
+    margin-bottom: 28px;
+    font-size: 17px;
+    color: #1d1d1f;
+    line-height: 1.6;
+    font-weight: 500;
+  }
+
+  .info-box span {
+    font-weight: 700;
+    color: #007aff;
+  }
+
+  /* 모바일 스마트폰 화면 최적화 (반응형) */
+  @media (max-width: 480px) {
+    .container {
+      padding: 40px 20px 30px 20px;
+    }
+    h1 {
+      font-size: 30px; /* 모바일에서도 안 깨지고 시원한 크기 */
+    }
+    p {
+      font-size: 17px;
+    }
+    .btn {
+      padding: 18px 20px;
+      font-size: 16px;
+    }
+    .checkbox-label {
+      padding: 18px 20px;
+      font-size: 16px;
+    }
+    input[type="text"] {
+      padding: 18px;
+      font-size: 16px;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- Step 0: 인트로 -->
+  <div id="step-0" class="step active">
+    <span class="tag">Confidential Invitation</span>
+    <h1>2026 하반기 가을 엠티<br>초대장이 도착했습니다 💌</h1>
+    <p>바쁜 일상 속 단 1박 2일!<br>당신의 일상에 커다란 즐거움을 선물할 여정에 함께하시겠습니까?</p>
+    <button class="btn btn-action" onclick="nextStep(1)">초대 응답 시작하기 →</button>
+  </div>
+
+  <!-- Step 1: 동참 여부 -->
+  <div id="step-1" class="step">
+    <span class="tag">Question 01</span>
+    <h1>2026 가을 대서사시의 시작,<br>함께하시겠습니까?</h1>
+    <button class="btn btn-option" onclick="selectAnswer('참석')">🔥 무조건 콜! 내 주말과 간(Liver)을 바친다</button>
+    <button class="btn btn-option" onclick="selectAnswer('조율')">🤔 무슨 짓을 할지 모르니 일단 스케줄 조율</button>
+    <button class="btn btn-option" onclick="selectAnswer('힐링')">🛌 푹 쉬고 고기나 먹는 힐링이라면 동참!</button>
+  </div>
+
+  <!-- Step 2: 10월 날짜 선택 -->
+  <div id="step-2" class="step">
+    <span class="tag">Question 02</span>
+    <h1>우리가 전설을 쓸 최고의 타이밍을 골라주세요</h1>
+    <p style="margin-bottom: 20px; font-size: 16px;">10월 중 참석 가능한 주차를 모두 선택 (중복 가능)</p>
+
+    <div class="checkbox-group">
+      <label class="checkbox-label">
+        <input type="checkbox" name="dates" value="10월 첫째주"> 10월 첫째 주말
+      </label>
+      <label class="checkbox-label">
+        <input type="checkbox" name="dates" value="10월 둘째주"> 10월 둘째 주말
+      </label>
+      <label class="checkbox-label">
+        <input type="checkbox" name="dates" value="10월 셋째주"> 10월 셋째 주말
+      </label>
+    </div>
+
+    <button class="btn btn-action" onclick="saveDatesAndNext()">다음 단계로 →</button>
+  </div>
+
+  <!-- Step 3: 이동 거리 체크 -->
+  <div id="step-3" class="step">
+    <span class="tag">Question 03</span>
+    <h1>목적지까지의 여정,<br>당신의 멘탈은 감당 가능한가요?</h1>
+    
+    <div class="info-box">
+      📍 <b>이동 예상 시간 (진접역 기준)</b><br>
+      • <span>자차 / 택시:</span> 약 30분<br>
+      • <span>대중교통:</span> 약 1시간 30분 ~ 2시간<br>
+      • <span>도보:</span> 약 7시간 (비추천)
+    </div>
+
+    <button class="btn btn-option" onclick="nextStep(4)">👌 껌이지! 택시 모둠 팟(4인 1조) 짜서 바로 출발</button>
+    <button class="btn btn-option" onclick="nextStep(4)">🚗 자차 보유자님/카풀 신님을 온 마음 다해 모심</button>
+    <button class="btn btn-option" onclick="nextStep(4)">🧳 조금 멀어 보이지만 고기 먹을 생각에 참음</button>
+  </div>
+
+  <!-- Step 4: 예산 체크 -->
+  <div id="step-4" class="step">
+    <span class="tag">Question 04</span>
+    <h1>최고의 숲속 감성을 위한<br>최소한의 투자</h1>
+    <p>1인당 <span style="color:#007aff; font-weight:700;">숙박비 약 4만 원 선</span> (장보기/택시비 별도), 당신의 통장 사정에 허락합니까?</p>
+
+    <button class="btn btn-option" onclick="nextStep(5)">💳 가성비 미쳤다! 당장 내 통장을 바침</button>
+    <button class="btn btn-option" onclick="nextStep(5)">💸 이 정도면 완전 혜자지, 오케이!</button>
+    <button class="btn btn-option" onclick="nextStep(5)">🪙 4만 원에 400만 원어치 뽕 뽑고 오겠음</button>
+  </div>
+
+  <!-- Step 5: 최종 이름 및 서약 -->
+  <div id="step-5" class="step">
+    <span class="tag">Final Step</span>
+    <h1>초대 응답을 마무리합니다</h1>
+    <p style="margin-bottom: 20px;">모임주의 숙소 예약 성공을 기원하는 마음으로 서약서를 제출해주세요!</p>
+    
+    <input type="text" id="userName" placeholder="이름을 입력해주세요" required>
+    <input type="text" id="userMessage" placeholder="모임주에게 한마디 or 익명 제보 (선택)">
+
+    <button class="btn btn-action" onclick="finish()">제출하고 예약 기운 보태기 🙏</button>
+  </div>
+
+  <!-- Step 6: 완료 화면 -->
+  <div id="step-6" class="step">
+    <h1 style="font-size: 64px; margin-bottom:16px;">🎉</h1>
+    <h1>응답이 완료되었습니다!</h1>
+    <p id="final-message">초대에 응해주셔서 감사합니다.<br>광클로 숙소 예약 성공해서 돌아올게요!</p>
+  </div>
+
+</div>
+
+<script>
+  let selectedDates = [];
+
+  function nextStep(stepNum) {
+    document.querySelectorAll('.step').forEach(el => el.classList.remove('active'));
+    document.getElementById(`step-${stepNum}`).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function selectAnswer(ans) {
+    nextStep(2);
+  }
+
+  function saveDatesAndNext() {
+    const checkedBoxes = document.querySelectorAll('input[name="dates"]:checked');
+    selectedDates = Array.from(checkedBoxes).map(cb => cb.value);
+    
+    if (selectedDates.length === 0) {
+      alert("최소 한 개 이상의 주차를 선택해주세요!");
+      return;
+    }
+    nextStep(3);
+  }
+
+  function finish() {
+    const name = document.getElementById('userName').value.trim();
+    if (!name) {
+      alert("이름을 입력해주세요!");
+      return;
+    }
+
+    document.getElementById('final-message').innerHTML = `<b>${name}</b>님의 응답이 정상적으로 제출되었습니다.<br>선택해주신 일정(<b>${selectedDates.join(', ')}</b>)을 바탕으로 꼭 숙소 예약 성공해 올게요!`;
+    nextStep(6);
+  }
+</script>
+
+</body>
+</html>
